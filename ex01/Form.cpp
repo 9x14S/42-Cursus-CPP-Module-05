@@ -39,7 +39,7 @@ Form::~Form( void ) {}
 Form &Form::operator=( const Form &that )
 {
 	if (this != &that)
-		this->setSignedStatus(that.getSignedStatus());
+		this->_signed = that.getSignedStatus();
 	return *this;
 }
 
@@ -74,17 +74,11 @@ const char *Form::GradeTooHighException::what( void ) const throw()
 	return "(form) grade too high!";
 }
 
-// setters
-void Form::setSignedStatus( bool signedness )
-{
-	this->_signed = signedness;
-}
-
 void Form::beSigned( Bureaucrat &b )
 {
 	if (b.getGrade() > this->getSignRequirement())
 		throw Form::GradeTooLowException();
-	this->setSignedStatus(true);
+	this->_signed = true;
 }
 
 std::ostream	&operator<<( std::ostream &output, const Form &f )

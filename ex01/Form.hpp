@@ -1,6 +1,5 @@
 #ifndef FORM_HPP
 # define FORM_HPP
-# pragma once
 
 # include <iostream>
 # include <exception>
@@ -18,10 +17,8 @@ public:
 	~Form( void );
 
 	// Main constructor
-	Form( std::string name, int sign_requirement, int exec_requirement);
+	Form( const std::string name, int sign_requirement, int exec_requirement);
 
-	// Setters
-	void	setSignedStatus( bool signedness );
 	// Required methods
 	void	beSigned( Bureaucrat &b );
 
