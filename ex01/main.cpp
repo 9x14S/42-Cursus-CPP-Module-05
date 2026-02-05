@@ -1,35 +1,18 @@
 #include <iostream>
 
+#include "Form.hpp"
 #include "Bureaucrat.hpp"
 
 int	main(void)
 {
-	std::cerr << "GradeTooHighException test" << std::endl;
-	try
-	{
-		Bureaucrat a = Bureaucrat("Too High", 0);
-	}
-	catch (std::exception &e)
-	{
-		std::cerr << e.what() << std::endl;
-	}
-	std::cerr << "GradeTooLowException test" << std::endl;
-	try
-	{
-		Bureaucrat b = Bureaucrat("Too Low", 0);
-	}
-	catch (std::exception &e)
-	{
-		std::cerr << e.what() << std::endl;
-	}
-	Bureaucrat c = Bureaucrat("Increment-Decrement Test", 5);
+	Form		a = Form("Test form", 5, 6);
+	Bureaucrat	b = Bureaucrat("Can sign and exec", 5);
+	Bureaucrat	c = Bureaucrat("Can just exec", 6);
+	Bureaucrat	d = Bureaucrat("Can't sign or exec", 7);
+	std::cout << a << std::endl;
 
-	std::cerr << "Increment test" << std::endl;
-	for (; c.getGrade() != 1; c.incrementGrade())
-		std::cout << c << std::endl;
-
-	std::cerr << "Decrement test" << std::endl;
-	for (; c.getGrade() != 10; c.decrementGrade())
-		std::cout << c << std::endl;
+	d.signForm(a);
+	c.signForm(a);
+	b.signForm(a);
 	return (0);
 }

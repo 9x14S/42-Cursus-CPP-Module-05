@@ -1,6 +1,7 @@
 #include <iostream>
 
 #include "Bureaucrat.hpp"
+#include "Form.hpp"
 
 // Orthodox Canonical Form
 Bureaucrat::Bureaucrat( void ) : _name("None"), _grade(150) {}
@@ -53,14 +54,30 @@ void	Bureaucrat::decrementGrade( void )
 		this->_grade++;
 }
 
+void	Bureaucrat::signForm( Form &form )
+{
+	try
+	{
+		form.beSigned( *this );
+		std::cout << "\"" << this->getName() << "\""
+			<< " signed \"" << form.getName() << "\"" << std::endl;
+	}
+	catch (std::exception &e)
+	{
+		std::cout << "\"" << this->getName() << "\""
+			<< " couldn't sign \"" << form.getName() << "\""
+			<< " because \"" << e.what() << "\"" << std::endl;
+	}
+}
+
 const char *Bureaucrat::GradeTooLowException::what() const throw()
 {
-	return "Grade is too low!!!";
+	return "(bureaucrat) grade is too low!!!";
 }
 
 const char *Bureaucrat::GradeTooHighException::what() const throw()
 {
-	return "Grade is too high!!!";
+	return "(bureaucrat) grade is too high!!!";
 }
 
 std::ostream &operator<<( std::ostream &output, const Bureaucrat &that )

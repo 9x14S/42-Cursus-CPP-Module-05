@@ -9,7 +9,7 @@ Form::Form( void )
 	// Same as comment below
 }
 
-Form::Form( Form &that )
+Form::Form( const Form &that )
 	: _name(that.getName()), _signed(that.getSignedStatus()),
 	  _sign_requirement(that.getSignRequirement()),
 	  _exec_requirement(that.getExecRequirement())
@@ -18,7 +18,7 @@ Form::Form( Form &that )
 	// creation and due to the members being private
 }
 
-Form::Form( std::string name, int sign_requirement, int exec_requirement )
+Form::Form( const std::string name, int sign_requirement, int exec_requirement )
 	: _name(name), _signed(false),
 	  _sign_requirement(sign_requirement),
 	  _exec_requirement(exec_requirement)
@@ -36,25 +36,42 @@ Form::Form( std::string name, int sign_requirement, int exec_requirement )
 
 Form::~Form( void ) {}
 
+Form &Form::operator=( const Form &that )
+{
+	if (this != &that)
+		this->setSignedStatus(that.getSignedStatus());
+	return *this;
+}
+
 // getters
-const std::string	&Form::getName( void )
+const std::string	&Form::getName( void ) const
 {
 	return _name;
 }
 
-bool				Form::getSignedStatus( void )
+bool				Form::getSignedStatus( void ) const
 {
 	return _signed;
 }
 
-int					Form::getSignRequirement( void )
+int					Form::getSignRequirement( void ) const
 {
 	return _sign_requirement;
 }
 
-int					Form::getExecRequirement( void )
+int					Form::getExecRequirement( void ) const
 {
 	return _exec_requirement;
+}
+
+const char *Form::GradeTooLowException::what( void ) const throw()
+{
+	return "(form) grade too low!";
+}
+
+const char *Form::GradeTooHighException::what( void ) const throw()
+{
+	return "(form) grade too high!";
 }
 
 // setters
@@ -70,13 +87,12 @@ void Form::beSigned( Bureaucrat &b )
 	this->setSignedStatus(true);
 }
 
-std::ostream	&operator<<( std::ostream &output, Form &f )
+std::ostream	&operator<<( std::ostream &output, const Form &f )
 {
 	output
-		<< f.getName() << ", "
-		<< f.getSignedStatus() << ", "
-		<< f.getSignRequirement() << ", "
-		<< f.getExecRequirement()
-		<< std::endl;;
+		<< "Name      : " << f.getName() << std::endl
+		<< "Signed    : " << f.getSignedStatus() << std::endl
+		<< "Grade required for Signing  : " << f.getSignRequirement() << std::endl
+		<< "Grade required for Executing: " << f.getExecRequirement() << std::endl;
 	return output;
 }

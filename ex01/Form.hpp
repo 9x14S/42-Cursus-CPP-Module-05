@@ -1,17 +1,19 @@
 #ifndef FORM_HPP
 # define FORM_HPP
+# pragma once
 
 # include <iostream>
+# include <exception>
 # include <string>
 
-# include "Bureaucrat.hpp"
+class Bureaucrat;
 
 class Form
 {
 public:
 	// Orthodox Canonical Form
 	Form( void );
-	Form( Form& that );
+	Form( const Form& that );
 	Form& operator=( const Form& that );
 	~Form( void );
 
@@ -24,10 +26,10 @@ public:
 	void	beSigned( Bureaucrat &b );
 
 	// Getters
-	const std::string	&getName( void );
-	bool				getSignedStatus( void );
-	int					getSignRequirement( void );
-	int					getExecRequirement( void );
+	const std::string	&getName( void )           const;
+	bool				getSignedStatus( void )    const;
+	int					getSignRequirement( void ) const;
+	int					getExecRequirement( void ) const;
 
 	// Exception Members
 	class GradeTooHighException : public std::exception

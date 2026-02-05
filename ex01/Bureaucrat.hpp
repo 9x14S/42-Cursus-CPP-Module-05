@@ -1,9 +1,12 @@
 #ifndef BUREAUCRAT_HPP
 # define BUREAUCRAT_HPP
+# pragma once
 
 # include <iostream>
 # include <exception>
 # include <string>
+
+class Form;
 
 class Bureaucrat
 {
@@ -14,6 +17,9 @@ public:
 	~Bureaucrat( void );
 
 	Bureaucrat( std::string name, int grade );
+
+	// ex01
+	void	signForm( Form &form );
 
 	const std::string	&getName( void ) const;
 	int					getGrade( void ) const;
