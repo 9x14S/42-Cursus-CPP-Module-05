@@ -6,3 +6,4 @@ cpp03
 *.o
 *.d
 a.out
+*_shrubbery

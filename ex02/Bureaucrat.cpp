@@ -1,7 +1,7 @@
 #include <iostream>
 
 #include "Bureaucrat.hpp"
-#include "Form.hpp"
+#include "AForm.hpp"
 
 // Orthodox Canonical Form
 Bureaucrat::Bureaucrat( void ) : _name("None"), _grade(150) {}
@@ -26,7 +26,7 @@ Bureaucrat &Bureaucrat::operator=( const Bureaucrat &that)
 }
 
 Bureaucrat::~Bureaucrat( void ) {}
-// End Orthodox Canonical Form
+// End Orthodox Canonical AForm
 
 const std::string &Bureaucrat::getName( void ) const
 {
@@ -54,7 +54,34 @@ void	Bureaucrat::decrementGrade( void )
 		this->_grade++;
 }
 
-void	Bureaucrat::signForm( Form &form )
+void	Bureaucrat::executeForm( const AForm &form )
+{
+	try
+	{
+		form.execute(*this);
+		std::cout
+			<< "\""
+			<< this->_name
+			<< "\" executed \""
+			<< form.getName()
+			<< "\""
+			<< std::endl;
+	}
+	catch (std::exception &e)
+	{
+		std::cerr
+			<< "\""
+			<< this->_name
+			<< "\" couldn't execute \""
+			<< form.getName()
+			<< "\" because \""
+			<< e.what()
+			<< "\""
+			<< std::endl;
+	}
+}
+
+void	Bureaucrat::signForm( AForm &form )
 {
 	try
 	{
@@ -72,12 +99,12 @@ void	Bureaucrat::signForm( Form &form )
 
 const char *Bureaucrat::GradeTooLowException::what() const throw()
 {
-	return "bureaucrat grade is too low!!!";
+	return "(bureaucrat) grade is too low!!!";
 }
 
 const char *Bureaucrat::GradeTooHighException::what() const throw()
 {
-	return "bureaucrat grade is too high!!!";
+	return "(bureaucrat) grade is too high!!!";
 }
 
 std::ostream &operator<<( std::ostream &output, const Bureaucrat &that )
