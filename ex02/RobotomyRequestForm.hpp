@@ -1,5 +1,5 @@
-#ifndef ROBOTOMY_CREATION_FORM_HPP
-# define ROBOTOMY_CREATION_FORM_HPP
+#ifndef ROBOTOMY_REQUEST_FORM_HPP
+# define ROBOTOMY_REQUEST_FORM_HPP
 
 # include "AForm.hpp"
 
@@ -19,4 +19,4 @@ private:
 	const std::string _target;
 };
 
-#endif // !ROBOTOMY_CREATION_FORM_HPP
+#endif // !ROBOTOMY_REQUEST_FORM_HPP

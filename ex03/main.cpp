@@ -1,56 +1,101 @@
 #include <ctime>
 #include <cstdlib>
 
-#include "PresidentialPardonForm.hpp"
-#include "RobotomyRequestForm.hpp"
-#include "ShrubberyCreationForm.hpp"
+#include "Intern.hpp"
 #include "Bureaucrat.hpp"
 
 int	main(void)
 {
 	std::srand(std::time(NULL));
-	// Shrubbery tests
-	ShrubberyCreationForm sform("Tree");
-	Bureaucrat	a = Bureaucrat("Tree Signer", 1);
-	Bureaucrat	b = Bureaucrat("Tree Executor", 1);
-	Bureaucrat	c = Bureaucrat("Tree Fail Signer", 150);
-	Bureaucrat	d = Bureaucrat("Tree Fail Executor", 150);
 
-	a.signForm(sform);
-	b.executeForm(sform);
+	Intern random_intern;
 
-	d.signForm(sform);
-	c.executeForm(sform);
+	// Succeed
+	Bureaucrat a("All-doer", 1);
+	try
+	{
+		AForm *pardon = NULL;
+		pardon = random_intern.makeForm("presidential pardon", "Random Criminal");
+		a.signForm(*pardon);
+		a.executeForm(*pardon);
+		delete pardon;
+	}
+	catch (std::exception &e)
+	{
+		std::cerr << "Intern couldn't create a presidential pardon form because \""
+			<< e.what() << "\"" << std::endl;
+	}
+	try
+	{
+		AForm *robotomy = NULL;
+		robotomy = random_intern.makeForm("robotomy request", "Roomba");
+		a.signForm(*robotomy);
+		a.executeForm(*robotomy);
+		delete robotomy;
+	}
+	catch (std::exception &e)
+	{
+		std::cerr << "Intern couldn't create a robotomy request form because \""
+			<< e.what() << "\"" << std::endl;
+	}
+	try
+	{
+		AForm *shrubbery = NULL;
+		shrubbery = random_intern.makeForm("shrubbery creation", "Tree");
+		a.signForm(*shrubbery);
+		a.executeForm(*shrubbery);
+		delete shrubbery;
+	}
+	catch (std::exception &e)
+	{
+		std::cerr << "Intern couldn't create a shrubbery creation form because \""
+			<< e.what() << "\"" << std::endl;
+	}
 
-	std::cout << std::endl;
+	// Fail
+	Bureaucrat b("Nothing-doer", 150);
+	try
+	{
+		AForm *pardon = NULL;
+		pardon = random_intern.makeForm("presidential pardon", "Random Criminal");
+		b.signForm(*pardon);
+		b.executeForm(*pardon);
+		delete pardon;
+	}
+	catch (std::exception &e)
+	{
+		std::cerr << "Intern couldn't create a presidential pardon form because \""
+			<< e.what() << "\"" << std::endl;
+	}
+	try
+	{
+		AForm *robotomy = NULL;
+		robotomy = random_intern.makeForm("robotomy request", "Roomba");
+		b.signForm(*robotomy);
+		b.executeForm(*robotomy);
+		delete robotomy;
+	}
+	catch (std::exception &e)
+	{
+		std::cerr << "Intern couldn't create a robotomy request form because \""
+			<< e.what() << "\"" << std::endl;
+	}
+	try
+	{
+		AForm *shrubbery = NULL;
+		shrubbery = random_intern.makeForm("shrubbery creation", "Tree");
+		b.signForm(*shrubbery);
+		b.executeForm(*shrubbery);
+		delete shrubbery;
+	}
+	catch (std::exception &e)
+	{
+		std::cerr << "Intern couldn't create a shrubbery creation form because \""
+			<< e.what() << "\"" << std::endl;
+	}
 
-	// Robotomy tests
-	RobotomyRequestForm rform("Roomba");
-	Bureaucrat	e = Bureaucrat("Robotomy Signer", 1);
-	Bureaucrat	f = Bureaucrat("Robotomy Executor", 1);
-	Bureaucrat	g = Bureaucrat("Robotomy Fail Signer", 150);
-	Bureaucrat	h = Bureaucrat("Robotomy Fail Executor", 150);
-
-	e.signForm(rform);
-	f.executeForm(rform);
-
-	g.signForm(rform);
-	h.executeForm(rform);
-
-	std::cout << std::endl;
-
-	// Pardon tests
-	PresidentialPardonForm pform("Random Criminal");
-	Bureaucrat	i = Bureaucrat("Pardon Signer", 1);
-	Bureaucrat	j = Bureaucrat("Pardon Executor", 1);
-	Bureaucrat	k = Bureaucrat("Pardon Fail Signer", 150);
-	Bureaucrat	l = Bureaucrat("Pardon Fail Executor", 150);
-
-	i.signForm(pform);
-	j.executeForm(pform);
-
-	k.signForm(pform);
-	l.executeForm(pform);
-
+	// Fail on creating form
+	AForm *nonexistent = random_intern.makeForm("non-existent form", "None");
+	(void)nonexistent;
 	return (0);
 }

@@ -1,5 +1,5 @@
-#ifndef FORM_HPP
-# define FORM_HPP
+#ifndef AFORM_HPP
+# define AFORM_HPP
 
 # include <iostream>
 # include <exception>
@@ -57,4 +57,4 @@ private:
 
 std::ostream &operator<<( std::ostream &output, const AForm& form );
 
-#endif /* FORM_HPP */
+#endif /* AFORM_HPP */
