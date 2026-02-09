@@ -1,7 +1,7 @@
 #include <iostream>
 
 #include "Bureaucrat.hpp"
-#include "AForm.hpp"
+#include "Form.hpp"
 
 // Orthodox Canonical Form
 Bureaucrat::Bureaucrat( void ) : _name("None"), _grade(150) {}
@@ -26,7 +26,7 @@ Bureaucrat &Bureaucrat::operator=( const Bureaucrat &that)
 }
 
 Bureaucrat::~Bureaucrat( void ) {}
-// End Orthodox Canonical AForm
+// End Orthodox Canonical Form
 
 const std::string &Bureaucrat::getName( void ) const
 {
@@ -54,7 +54,7 @@ void	Bureaucrat::decrementGrade( void )
 		this->_grade++;
 }
 
-void	Bureaucrat::executeForm( const AForm &form )
+void	Bureaucrat::executeForm( const Form &form )
 {
 	try
 	{
@@ -81,7 +81,7 @@ void	Bureaucrat::executeForm( const AForm &form )
 	}
 }
 
-void	Bureaucrat::signForm( AForm &form )
+void	Bureaucrat::signForm( Form &form )
 {
 	try
 	{

@@ -5,7 +5,7 @@
 # include <exception>
 # include <string>
 
-class AForm;
+class Form;
 
 class Bureaucrat
 {
@@ -18,9 +18,9 @@ public:
 	Bureaucrat( std::string name, int grade );
 
 	// ex01
-	void	signForm( AForm &form );
+	void	signForm( Form &form );
 	// ex02
-	void	executeForm( const AForm &form );
+	void	executeForm( const Form &form );
 
 	const std::string	&getName( void ) const;
 	int					getGrade( void ) const;

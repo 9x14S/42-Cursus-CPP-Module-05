@@ -6,7 +6,7 @@ CXX        := /usr/bin/c++
 CXXFLAGS   := -Wall -Wextra -Werror -MMD -std=c++98 -I.
 
 BUILD_DIR  := build
-SRCS       := main.cpp Bureaucrat.cpp AForm.cpp\
+SRCS       := main.cpp Bureaucrat.cpp Form.cpp\
 			ShrubberyCreationForm.cpp RobotomyRequestForm.cpp\
 			PresidentialPardonForm.cpp Intern.cpp
 OBJS       := $(SRCS:%.cpp=$(BUILD_DIR)/%.o)
@@ -28,7 +28,7 @@ $(BUILD_DIR)/%.o: %.cpp Makefile
 
 # Cleaning
 clean:
-	rm -f $(OBJS) $(DEPS)
+	rm -f $(OBJS) $(DEPS) *_shrubbery
 	rm -rf $(BUILD_DIR)
 fclean: clean
 	rm -f $(TARGET)

@@ -14,7 +14,7 @@ int	main(void)
 	Bureaucrat a("All-doer", 1);
 	try
 	{
-		AForm *pardon = NULL;
+		Form *pardon = NULL;
 		pardon = random_intern.makeForm("presidential pardon", "Random Criminal");
 		a.signForm(*pardon);
 		a.executeForm(*pardon);
@@ -27,7 +27,7 @@ int	main(void)
 	}
 	try
 	{
-		AForm *robotomy = NULL;
+		Form *robotomy = NULL;
 		robotomy = random_intern.makeForm("robotomy request", "Roomba");
 		a.signForm(*robotomy);
 		a.executeForm(*robotomy);
@@ -40,7 +40,7 @@ int	main(void)
 	}
 	try
 	{
-		AForm *shrubbery = NULL;
+		Form *shrubbery = NULL;
 		shrubbery = random_intern.makeForm("shrubbery creation", "Tree");
 		a.signForm(*shrubbery);
 		a.executeForm(*shrubbery);
@@ -56,7 +56,7 @@ int	main(void)
 	Bureaucrat b("Nothing-doer", 150);
 	try
 	{
-		AForm *pardon = NULL;
+		Form *pardon = NULL;
 		pardon = random_intern.makeForm("presidential pardon", "Random Criminal");
 		b.signForm(*pardon);
 		b.executeForm(*pardon);
@@ -69,7 +69,7 @@ int	main(void)
 	}
 	try
 	{
-		AForm *robotomy = NULL;
+		Form *robotomy = NULL;
 		robotomy = random_intern.makeForm("robotomy request", "Roomba");
 		b.signForm(*robotomy);
 		b.executeForm(*robotomy);
@@ -82,7 +82,7 @@ int	main(void)
 	}
 	try
 	{
-		AForm *shrubbery = NULL;
+		Form *shrubbery = NULL;
 		shrubbery = random_intern.makeForm("shrubbery creation", "Tree");
 		b.signForm(*shrubbery);
 		b.executeForm(*shrubbery);
@@ -95,7 +95,7 @@ int	main(void)
 	}
 
 	// Fail on creating form
-	AForm *nonexistent = random_intern.makeForm("non-existent form", "None");
+	Form *nonexistent = random_intern.makeForm("non-existent form", "None");
 	(void)nonexistent;
 	return (0);
 }

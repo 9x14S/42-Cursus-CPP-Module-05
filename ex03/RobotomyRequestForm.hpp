@@ -1,9 +1,9 @@
 #ifndef ROBOTOMY_REQUEST_FORM_HPP
 # define ROBOTOMY_REQUEST_FORM_HPP
 
-# include "AForm.hpp"
+# include "Form.hpp"
 
-class RobotomyRequestForm : public AForm
+class RobotomyRequestForm : public Form
 {
 public:
 	// Orthodox Canonical Form

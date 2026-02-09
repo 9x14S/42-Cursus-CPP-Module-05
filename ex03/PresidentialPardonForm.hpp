@@ -1,9 +1,9 @@
 #ifndef PRESIDENTIAL_PARDON_FORM_HPP
 # define PRESIDENTIAL_PARDON_FORM_HPP
 
-# include "AForm.hpp"
+# include "Form.hpp"
 
-class PresidentialPardonForm : public AForm
+class PresidentialPardonForm : public Form
 {
 public:
 	// Orthodox Canonical Form

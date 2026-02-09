@@ -2,7 +2,7 @@
 #include "PresidentialPardonForm.hpp"
 #include "ShrubberyCreationForm.hpp"
 #include "RobotomyRequestForm.hpp"
-#include "AForm.hpp"
+#include "Form.hpp"
 
 // Orthodox Canonical Form
 Intern::Intern( void )
@@ -22,23 +22,23 @@ Intern &Intern::operator=( const Intern & that)
 Intern::~Intern( void )
 {}
 
-AForm *Intern::_createShrubbery(std::string target) const
+Form *Intern::_createShrubbery(std::string target) const
 {
 	return new ShrubberyCreationForm(target);
 }
 
-AForm *Intern::_createPardon(std::string target) const
+Form *Intern::_createPardon(std::string target) const
 {
 	return new PresidentialPardonForm(target);
 }
 
-AForm *Intern::_createRobotomy(std::string target) const
+Form *Intern::_createRobotomy(std::string target) const
 {
 	return new RobotomyRequestForm(target);
 }
 
 // Subject requirement
-AForm *Intern::makeForm( const std::string form_type, std::string form_target ) const
+Form *Intern::makeForm( const std::string form_type, std::string form_target ) const
 {
 	const std::string _functionNames[3] = {
 		"shrubbery creation",

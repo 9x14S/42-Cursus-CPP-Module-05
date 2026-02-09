@@ -3,14 +3,14 @@
 
 #include "Bureaucrat.hpp"
 #include "ShrubberyCreationForm.hpp"
-#include "AForm.hpp"
+#include "Form.hpp"
 
 #define SHRUBBERY_SIGN_REQUIREMENT 145
 #define SHRUBBERY_EXEC_REQUIREMENT 137
 
 // Orthodox Canonical Form
 ShrubberyCreationForm::ShrubberyCreationForm( void )
-	:	AForm(
+	:	Form(
 			"ShrubberyCreationForm",
 			SHRUBBERY_SIGN_REQUIREMENT,
 			SHRUBBERY_EXEC_REQUIREMENT),
@@ -18,7 +18,7 @@ ShrubberyCreationForm::ShrubberyCreationForm( void )
 {}
 
 ShrubberyCreationForm::ShrubberyCreationForm( const ShrubberyCreationForm &that )
-	:	AForm(
+	:	Form(
 			that.getName(),
 			SHRUBBERY_SIGN_REQUIREMENT,
 			SHRUBBERY_EXEC_REQUIREMENT),
@@ -27,7 +27,7 @@ ShrubberyCreationForm::ShrubberyCreationForm( const ShrubberyCreationForm &that 
 
 ShrubberyCreationForm &ShrubberyCreationForm::operator=( const ShrubberyCreationForm & that)
 {
-	AForm::operator=(that);
+	Form::operator=(that);
 	return *this;
 }
 
@@ -36,7 +36,7 @@ ShrubberyCreationForm::~ShrubberyCreationForm( void )
 
 // Main stuff
 ShrubberyCreationForm::ShrubberyCreationForm( std::string target )
-	:	AForm(
+	:	Form(
 			target,
 			SHRUBBERY_SIGN_REQUIREMENT,
 			SHRUBBERY_EXEC_REQUIREMENT),
@@ -46,9 +46,9 @@ ShrubberyCreationForm::ShrubberyCreationForm( std::string target )
 void ShrubberyCreationForm::execute( const Bureaucrat &b ) const
 {
 	if (b.getGrade() > this->getExecRequirement())
-		throw AForm::GradeTooLowException();
+		throw Form::GradeTooLowException();
 	else if (!this->getSignedStatus())
-		throw AForm::FormNotSignedException();
+		throw Form::FormNotSignedException();
 	std::string filename = this->_target + "_shrubbery";
 	std::ofstream outfile(filename.c_str());
 	if (!outfile.is_open())

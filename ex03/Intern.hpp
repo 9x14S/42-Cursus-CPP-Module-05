@@ -1,7 +1,7 @@
 #ifndef INTERN_HPP
 # define INTERN_HPP
 
-# include "AForm.hpp"
+# include "Form.hpp"
 
 class Intern
 {
@@ -13,13 +13,13 @@ public:
 	Intern &operator=( const Intern &that );
 
 	// Subject requirement
-	AForm *makeForm( const std::string form_type, std::string form_target ) const;
+	Form *makeForm( const std::string form_type, std::string form_target ) const;
 private:
-	typedef AForm *(Intern::*_function_ptr)(std::string) const;
+	typedef Form *(Intern::*_function_ptr)(std::string) const;
 
-	AForm *_createShrubbery( std::string target ) const;
-	AForm *_createPardon( std::string target ) const;
-	AForm *_createRobotomy( std::string target ) const;
+	Form *_createShrubbery( std::string target ) const;
+	Form *_createPardon( std::string target ) const;
+	Form *_createRobotomy( std::string target ) const;
 
 };
 
