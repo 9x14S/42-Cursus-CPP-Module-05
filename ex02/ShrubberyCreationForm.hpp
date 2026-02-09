@@ -1,9 +1,9 @@
 #ifndef SHRUBBERY_CREATION_FORM_HPP
 # define SHRUBBERY_CREATION_FORM_HPP
 
-# include "AForm.hpp"
+# include "Form.hpp"
 
-class ShrubberyCreationForm : public AForm
+class ShrubberyCreationForm : public Form
 {
 public:
 	// Orthodox Canonical Form

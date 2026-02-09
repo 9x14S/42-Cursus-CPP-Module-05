@@ -1,5 +1,5 @@
-#ifndef AFORM_HPP
-# define AFORM_HPP
+#ifndef FORM_HPP
+# define FORM_HPP
 
 # include <iostream>
 # include <exception>
@@ -7,17 +7,17 @@
 
 class Bureaucrat;
 
-class AForm
+class Form
 {
 public:
-	// Orthodox Canonical AForm
-	AForm( void );
-	AForm( const AForm& that );
-	AForm& operator=( const AForm& that );
-	virtual ~AForm( void );
+	// Orthodox Canonical Form
+	Form( void );
+	Form( const Form& that );
+	Form& operator=( const Form& that );
+	virtual ~Form( void );
 
 	// Main constructor
-	AForm( const std::string name, int sign_requirement, int exec_requirement);
+	Form( const std::string name, int sign_requirement, int exec_requirement);
 
 	// Required methods
 	void	beSigned( Bureaucrat &b );
@@ -55,6 +55,6 @@ private:
 	const int			_exec_requirement;
 };
 
-std::ostream &operator<<( std::ostream &output, const AForm& form );
+std::ostream &operator<<( std::ostream &output, const Form& form );
 
-#endif /* AFORM_HPP */
+#endif /* FORM_HPP */

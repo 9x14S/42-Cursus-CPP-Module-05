@@ -6,7 +6,7 @@ CXX        := /usr/bin/c++
 CXXFLAGS   := -Wall -Wextra -Werror -MMD -std=c++98 -I.
 
 BUILD_DIR  := build
-SRCS       := main.cpp Bureaucrat.cpp AForm.cpp\
+SRCS       := main.cpp Bureaucrat.cpp Form.cpp\
 			ShrubberyCreationForm.cpp RobotomyRequestForm.cpp\
 			PresidentialPardonForm.cpp
 OBJS       := $(SRCS:%.cpp=$(BUILD_DIR)/%.o)

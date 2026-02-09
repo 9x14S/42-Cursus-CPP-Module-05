@@ -2,14 +2,14 @@
 
 #include "Bureaucrat.hpp"
 #include "RobotomyRequestForm.hpp"
-#include "AForm.hpp"
+#include "Form.hpp"
 
 #define ROBOTOMY_SIGN_REQUIREMENT 72
 #define ROBOTOMY_EXEC_REQUIREMENT 45
 
 // Orthodox Canonical Form
 RobotomyRequestForm::RobotomyRequestForm( void )
-	:	AForm(
+	:	Form(
 			"RobotomyRequestForm",
 			ROBOTOMY_SIGN_REQUIREMENT,
 			ROBOTOMY_EXEC_REQUIREMENT),
@@ -17,7 +17,7 @@ RobotomyRequestForm::RobotomyRequestForm( void )
 {}
 
 RobotomyRequestForm::RobotomyRequestForm( const RobotomyRequestForm &that )
-	:	AForm(
+	:	Form(
 			that.getName(),
 			ROBOTOMY_SIGN_REQUIREMENT,
 			ROBOTOMY_EXEC_REQUIREMENT),
@@ -26,7 +26,7 @@ RobotomyRequestForm::RobotomyRequestForm( const RobotomyRequestForm &that )
 
 RobotomyRequestForm &RobotomyRequestForm::operator=( const RobotomyRequestForm & that)
 {
-	AForm::operator=(that);
+	Form::operator=(that);
 	return *this;
 }
 
@@ -35,7 +35,7 @@ RobotomyRequestForm::~RobotomyRequestForm( void )
 
 // Main stuff
 RobotomyRequestForm::RobotomyRequestForm( std::string target )
-	:	AForm(
+	:	Form(
 			target,
 			ROBOTOMY_SIGN_REQUIREMENT,
 			ROBOTOMY_EXEC_REQUIREMENT),
@@ -45,9 +45,9 @@ RobotomyRequestForm::RobotomyRequestForm( std::string target )
 void RobotomyRequestForm::execute( const Bureaucrat &b ) const
 {
 	if (!this->getSignedStatus())
-		throw AForm::FormNotSignedException();
+		throw Form::FormNotSignedException();
 	if (b.getGrade() > this->getExecRequirement())
-		throw AForm::GradeTooLowException();
+		throw Form::GradeTooLowException();
 	std::cout << "<Drilling noises>" << std::endl;
 	if (rand() % 2)
 		std::cout << "\"" << this->_target << "\" robotomized successfully!" << std::endl;
